@@ -13,4 +13,17 @@ class ApplicationController < ActionController::Base
     redirect_to '/login' unless current_user
   end
 
+  helper_method :entry_all
+
+  def entry_all
+    @entry= Entry.new
+    @entries = Entry.all
+  end
+
+  helper_method :user_all
+
+  def user_all
+    @user = User.new
+    @users = User.all
+  end
 end

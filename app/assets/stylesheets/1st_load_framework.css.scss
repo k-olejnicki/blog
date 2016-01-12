@@ -1,17 +1,33 @@
 // import the CSS framework
 @import "bootstrap-sprockets";
 @import "bootstrap";
-
 // make all images responsive by default
+* {
+  font-family:"coalhand luke";
+  font-weight:bold;}
+.p {
+  font-family:meloregular;
+  font-weight:bold;
+}
 img {
   @extend .img-responsive;
   margin: 0 auto;
   }
+@font-face {
+  font-family: 'meloregular';
+  src: url('/fonts/melo-regular-webfont.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-family: 'coalhand luke';
+  src: url('/fonts/CoalhandLuke TRIAL.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
 // override for the 'Home' navigation link
 .navbar-brand {
   font-size: inherit;
   }
-
 // THESE ARE EXAMPLES YOU CAN MODIFY
 // create your own classes
 // to make views framework-neutral
@@ -43,5 +59,6 @@ body {
 }
 section {
   @extend .row;
+  font-weight: bold;
   margin-top: 20px;
   }

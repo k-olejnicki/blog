@@ -5,12 +5,13 @@ class EntriesController < ApplicationController
   # GET /entries
   # GET /entries.json
   def index
-    @entries = Entry.all
+    @entries = Entry.where(["date <= ?" , Date.today])
   end
 
   # GET /entries/1
   # GET /entries/1.json
   def show
+    @entry = Entry.find(params["id"])
   end
 
   # GET /entries/new
@@ -20,6 +21,7 @@ class EntriesController < ApplicationController
 
   # GET /entries/1/edit
   def edit
+    @entry = Entry.find(params["id"])
   end
 
   # POST /entries
@@ -61,6 +63,12 @@ class EntriesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  def date
+    time = Time.new
+
+    values = time.to_a
+    puts Time.utc(*values)
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -70,6 +78,6 @@ class EntriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def entry_params
-      params.require(:entry).permit(:title, :date, :contents)
+      params.require(:entry).permit(:id, :title, :date, :contents, :image, :youtube_url, :youtube_embed)
     end
 end
