@@ -3,10 +3,10 @@
 @import "bootstrap";
 // make all images responsive by default
 * {
-  font-family:"coalhand luke";
+  font-family: Shadows Into Light Two, cursive;;
   font-weight:bold;}
 .p {
-  font-family:meloregular;
+  font-family:Shadows Into Light Two;
   font-weight:bold;
 }
 img {
@@ -18,10 +18,10 @@ img {
   src: url('/fonts/melo-regular-webfont.ttf') format('truetype');
   font-weight: bold;
   font-style: normal;
-  font-family: 'coalhand luke';
-  src: url('/fonts/CoalhandLuke TRIAL.ttf') format('truetype');
-  font-weight: bold;
+  font-family: 'Shadows Into Light Two';
   font-style: normal;
+  font-weight: 400;
+  src: local('Shadows Into Light Two'), local('ShadowsIntoLightTwo-Regular'), url(https://fonts.gstatic.com/s/shadowsintolighttwo/v4/gDxHeefcXIo-lOuZFCn2xbIfIbZrEcH2WW587lG91II.woff2) format('woff2');
 }
 
 // override for the 'Home' navigation link
