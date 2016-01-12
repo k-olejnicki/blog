@@ -14,14 +14,13 @@ img {
   margin: 0 auto;
   }
 @font-face {
-  font-family: 'meloregular';
-  src: url('/fonts/melo-regular-webfont.ttf') format('truetype');
+  font-family: 'Shadows Into Light Two';
+  src: url('/fonts/ShadowsIntoLightTwo-Regular.ttf') format('truetype');
   font-weight: bold;
   font-style: normal;
   font-family: 'Shadows Into Light Two';
   font-style: normal;
   font-weight: 400;
-  src: local('Shadows Into Light Two'), local('ShadowsIntoLightTwo-Regular'), url(https://fonts.gstatic.com/s/shadowsintolighttwo/v4/gDxHeefcXIo-lOuZFCn2xbIfIbZrEcH2WW587lG91II.woff2) format('woff2');
 }
 
 // override for the 'Home' navigation link
