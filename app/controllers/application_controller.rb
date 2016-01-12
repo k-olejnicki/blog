@@ -26,4 +26,11 @@ class ApplicationController < ActionController::Base
     @user = User.new
     @users = User.all
   end
+
+  helper_method :comment_all
+
+  def comment_all
+    @comment = Comment.new
+    @comments = Comment.all
+  end
 end
