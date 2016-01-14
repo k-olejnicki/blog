@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160103225719) do
+ActiveRecord::Schema.define(version: 20160114163603) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20160103225719) do
     t.string   "category"
     t.integer  "user_id"
     t.string   "nick"
+    t.string   "youtube_url"
   end
 
   create_table "users", force: :cascade do |t|

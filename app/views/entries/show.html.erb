@@ -9,7 +9,7 @@
 
       <!-- Blog Post -->
 
-          <p><img class="img-responsive" src=<%= @entry.image %></p>
+          <p><img class="img-responsive" src=<%= link_to image_tag(@entry.image.url(:normal)), @entry.image.url %></p>
           <!-- Title -->
           <h1><%= @entry.title %></h1>
 
@@ -17,17 +17,18 @@
           <p class="lead">
             by <a href="#"><%= @entry.nick %></a>
           </p>
-
-          <hr>
-
-          <!-- Date/Time -->
-          <p><span class="glyphicon glyphicon-time"></span> Posted on <%= @entry.created_at %></p>
-
-          <hr>
+      <p><% if @entry.category %>
+          <%=@entry.category %>
+      <%end%></p>
+      <hr>
+      <!-- Date/Time -->
+      <p><span class="glyphicon glyphicon-time"></span> Posted on <%= @entry.created_at %></p>
+      <hr>
 
           <!-- Preview Image -->
-      <%= link_to image_tag(@entry.image.url(:normal)), @entry.image.url %>
-
+      <% if @entry.youtube_url %>
+          <%= youtube_embed @entry.youtube_url %>
+      <%end%>
           <hr>
 
           <!-- Post Content -->
@@ -38,13 +39,18 @@
       <!-- Blog Comments -->
 
       <!-- Comments Form -->
+
       <div class="well">
         <h4>Leave a Comment:</h4>
         <form role="form">
           <div class="form-group">
-            <textarea class="form-control" rows="3"></textarea>
+            <%= simple_form_for(Comment.new) do |f| %>
+                <%= f.hidden_field :entry_id, value: @entry.id %>
+                <%= f.hidden_field :nick, value: @entry.nick %>
+                <textarea  class="form-control" rows="3"><% f.input_field :contents%></textarea>
           </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
+         <div  type="submit" class="btn btn-primary"><%= f.button :submit, label: 'Create'%></div>
+            <% end %>
         </form>
       </div>
 
@@ -53,18 +59,20 @@
       <!-- Posted Comments -->
 
       <!-- Comment -->
+      <% for comment in @entry.comments %>
       <div class="media">
         <a class="pull-left" href="#">
-          <img class="media-object" src="<%user_all.each%>" alt="">
+          <img class="media-object" src="http://placehold.it/64x64" alt="">
         </a>
         <div class="media-body">
-          <h4 class="media-heading">Start Bootstrap
-            <small>August 25, 2014 at 9:30 PM</small>
+          <h4 class="media-heading"><% comment.nick %>
+            <small><%comment.created_at%></small>
           </h4>
-          Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+          <%comment.contents%>
+
         </div>
       </div>
-
+      <%end%>
       <!-- Comment -->
       <div class="media">
         <a class="pull-left" href="#">
@@ -116,7 +124,7 @@
         <div class="row">
           <div class="col-lg-6">
             <ul class="list-unstyled">
-              <li><a href="#">Category Name</a>
+              <li><a href="#"><%@entry.category%></a>
               </li>
               <li><a href="#">Category Name</a>
               </li>
@@ -159,7 +167,7 @@
   <footer>
     <div class="row">
       <div class="col-lg-12">
-        <p>Copyright &copy; Your Website 2014</p>
+        <p>Copyright &copy; K.O Website 2016</p>
       </div>
     </div>
     <!-- /.row -->

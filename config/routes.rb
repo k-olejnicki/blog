@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   root to: 'visitors#index'
   post 'login' => 'sessions#create'
   post 'entries/entry/new' => 'entries#new'
+  get 'comment' => 'comments#new'
 end

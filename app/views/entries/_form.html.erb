@@ -1,14 +1,17 @@
-<%= simple_form_for(@entry) do |f| %>
+<%= simple_form_for@entry,html: { multipart: true } do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
+    <%= f.hidden_field :user_id, value: current_user.id %>
     <%= f.input :title %>
-    <p><small><%= f.input_field :nick, value: current_user.nick, disabled:true %></small></p>
+    <%=  f.hidden_field :nick, value: current_user.nick %>
     <%= f.input_field :date,as: :date, start_month: Date.today.month,
                 end_month: Date.today.month + 12, start_year: Date.today.year, end_year: Date.today.year+1,
                 order: [:day, :month, :year] %>
     <%=  f.input_field :category, as: :radio_buttons, collection: ["Music","Travel","Design","Food","Movie","Technology","Hobby","Other"] %>
     <%= f.input :contents, label: 'Post Content' %>
+    <%= f.label :youtube_url %>
+    <%= f.input_field :youtube_url,label:'Youtube video url', value:'https://' , hint: 'np.https://www.youtube.com/watch?v=[film_unique_id]' %>
     <%= f.input :image %>
   </div>
 

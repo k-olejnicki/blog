@@ -78,6 +78,6 @@ class EntriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def entry_params
-      params.require(:entry).permit(:id, :title, :date, :contents, :image, :youtube_url, :youtube_embed)
+      params.require(:entry).permit(:id, :title, :date, :contents, :image, :youtube_url, :youtube_embed, :nick, :category, :user_id, :image_file_name)
     end
 end
