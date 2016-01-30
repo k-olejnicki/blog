@@ -18,6 +18,7 @@ group :development do
   gem 'spring'
   gem 'guard'
   gem 'guard-livereload'
+  gem 'pry'
 end
 gem 'bootstrap-sass'
 gem 'high_voltage'

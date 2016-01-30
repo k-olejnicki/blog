@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   post 'login' => 'sessions#create'
   post 'entries/entry/new' => 'entries#new'
   get 'comment' => 'comments#new'
+  get 'entries/entry/new' => 'entries#new'
 end

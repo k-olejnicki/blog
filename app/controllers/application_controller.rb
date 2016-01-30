@@ -13,10 +13,13 @@ class ApplicationController < ActionController::Base
     redirect_to '/login' unless current_user
   end
 
+  helper_method :search
+   def search
+     @entries = Entry.search(params[:search])
+   end
   helper_method :entry_all
 
   def entry_all
-    @entry= Entry.new
     @entries = Entry.all
   end
 

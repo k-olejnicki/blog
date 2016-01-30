@@ -5,20 +5,32 @@ class EntriesController < ApplicationController
   # GET /entries
   # GET /entries.json
   def index
-    @entries = Entry.where(["date <= ?" , Date.today])
+    if params[:search]
+      @entries = Entry.search(params[:search]).order("created_at DESC")
+      else
+    if params[:category]
+      @entries = Entry.where(:category => params[:category])
+      flash[:notice] = "There are <b>#{@entries.count}</b> in this category".html_safe
+    else
+      @entries = Entry.all.order("created_at DESC") && Entry.where(["date <= ?" , Date.today])
+    end
+    end
   end
-
+  def random_items(array)
+    array.sample(1 + rand(array.count))
+  end
   # GET /entries/1
   # GET /entries/1.json
   def show
     @entry = Entry.find(params["id"])
   end
-
   # GET /entries/new
   def new
     @entry = Entry.new
   end
-
+  def category
+    @entry = Entry.find(params["category"])
+  end
   # GET /entries/1/edit
   def edit
     @entry = Entry.find(params["id"])

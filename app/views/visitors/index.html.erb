@@ -7,7 +7,7 @@
         <div class="col-md-8">
 
             <h1 class="page-header">
-              <img src="/images/Santa_withpaper.jpg" />
+              <img src="/images/logo.png" />
             </h1>
 
             <!-- First Blog Post -->
@@ -18,6 +18,7 @@
             <p class="lead">
                 by <%= entry.nick %>
             </p>
+            <p><%= entry.category %></p>
             <p><span class="glyphicon glyphicon-time"></span> Posted on <%= entry.created_at %></p>
             <hr>
             <img class="img-responsive" src=<%= link_to image_tag(entry.image(:normal)), @entry.image.url%>
@@ -41,17 +42,16 @@
 
         <!-- Blog Sidebar Widgets Column -->
         <div class="col-md-4">
+          <%%>
 
             <!-- Blog Search Well -->
             <div class="well">
                 <h4>Blog Search</h4>
                 <div class="input-group">
-                    <input type="text" class="form-control">
-                    <span class="input-group-btn">
-                        <button class="btn btn-default" type="button">
-                            <span class="glyphicon glyphicon-search"></span>
-                    </button>
-                    </span>
+                      <%= form_tag(entries_path, :method => "get", id: "search-form") do %>
+                          <%= text_field_tag :search, params[:search], placeholder: "Search Posts" %>
+                          <%= submit_tag "Search" %>
+                      <% end %>
                 </div>
                 <!-- /.input-group -->
             </div>
@@ -62,27 +62,19 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <ul class="list-unstyled">
-                            <li><a href="#"><%@entry.category%></a>
-                            </li>
-                            <li><a href="#">Category Name</a>
-                            </li>
-                            <li><a href="#">Category Name</a>
-                            </li>
-                            <li><a href="#">Category Name</a>
-                            </li>
+                          <li><%= link_to "Music", entries_path(:category=>"Music")%></li>
+                          <li><%= link_to "Travel", entries_path(:category=>"Travel")%></li>
+                          <li><%= link_to "Design", entries_path(:category=>"Design")%></li>
+                          <li><%= link_to "Food", entries_path(:category=>"Food")%></li>
                         </ul>
                     </div>
                     <!-- /.col-lg-6 -->
                     <div class="col-lg-6">
                         <ul class="list-unstyled">
-                            <li><a href="#">Category Name</a>
-                            </li>
-                            <li><a href="#">Category Name</a>
-                            </li>
-                            <li><a href="#">Category Name</a>
-                            </li>
-                            <li><a href="#">Category Name</a>
-                            </li>
+                          <li><%= link_to "Movie", entries_path(:category=>"Movie")%></li>
+                          <li><%= link_to "Technology", entries_path(:category=>"Technology")%></li>
+                          <li><%= link_to "Hobby", entries_path(:category=>"Hobby")%></li>
+                          <li><%= link_to "Other", entries_path(:category=>"Other")%></li>
                         </ul>
                     </div>
                     <!-- /.col-lg-6 -->
@@ -93,7 +85,7 @@
             <!-- Side Widget Well -->
             <div class="well">
                 <h4>Side Widget Well</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus laudantium odit aliquam repellat tempore quos aspernatur vero.</p>
+                <p>text</p>
             </div>
 
         </div>
@@ -107,7 +99,7 @@
     <footer>
         <div class="row">
             <div class="col-lg-12">
-                <p>Copyright &copy; K.O Website 2015</p>
+                <p>Copyright &copy; K.O Website 2016</p>
             </div>
             <!-- /.col-lg-12 -->
         </div>

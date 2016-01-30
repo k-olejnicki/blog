@@ -255,6 +255,7 @@ DEPENDENCIES
   mini_magick
   paperclip
   pg
+  pry
   puma
   quiet_assets
   rails (= 4.2.5)
