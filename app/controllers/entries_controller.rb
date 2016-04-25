@@ -5,6 +5,7 @@ class EntriesController < ApplicationController
   # GET /entries
   # GET /entries.json
   def index
+    @entry = Entry.offset(rand(Entry.count)).first
     if params[:search]
       @entries = Entry.search(params[:search]).order("created_at DESC")
       else
@@ -16,8 +17,9 @@ class EntriesController < ApplicationController
     end
     end
   end
-  def random_items(array)
-    array.sample(1 + rand(array.count))
+  def random_items
+    offset = rand(Entry.count)
+    rand_record = Entry.offset(offset).first
   end
   # GET /entries/1
   # GET /entries/1.json

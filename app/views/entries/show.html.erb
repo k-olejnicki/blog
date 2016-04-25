@@ -59,30 +59,33 @@
       <!-- Posted Comments -->
 
       <!-- Comment -->
-      <% for comment in @entry.comments %>
-      <div class="media">
-        <a class="pull-left" href="#">
-          <img class="media-object" src="http://placehold.it/64x64" alt="">
-        </a>
-        <div class="media-body">
-          <h4 class="media-heading"><% comment.nick %>
-            <small><%comment.created_at%></small>
-          </h4>
-          <%comment.contents%>
+      <%= simple_form_for(Comment.new) do |f| %>
+          <%= f.error_notification %>
 
-        </div>
-      </div>
-      <%end%>
+          <div class="form-inputs">
+            <%= f.hidden_field :nick, value: @entry.nick %>
+            <%= f.input :contents, label:"Leave a Comment" %>
+            <%= f.hidden_field :entry_id, value: @entry.id %>
+          </div>
+
+          <div class="form-actions">
+            <%= f.button :submit %>
+          </div>
+      <% end %>
       <!-- Comment -->
       <div class="media">
         <a class="pull-left" href="#">
-          <img class="media-object" src="http://placehold.it/64x64" alt="">
+          <% for user in user_all %>
+          <img class="media-object" src="<%=user.avatar(:img)%>" alt="">
+              <%end%>
         </a>
+        <% for comment in @entry.comments %>
         <div class="media-body">
-          <h4 class="media-heading">Start Bootstrap
-            <small>August 25, 2014 at 9:30 PM</small>
+          <h4 class="media-heading"><%= comment.nick %>
+            <small><%= comment.created_at.strftime("%d %b. %Y %H:%M") %></small>
           </h4>
-          Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+          <%= comment.contents %>
+        <%end%>
           <!-- Nested Comment -->
           <div class="media">
             <a class="pull-left" href="#">
@@ -121,18 +124,18 @@
         <div class="row">
           <div class="col-lg-6">
             <ul class="list-unstyled">
-              <li><%= link_to "Music", entries_path(:category=>"Music")%></li>
-              <li><%= link_to "Travel", entries_path(:category=>"Travel")%></li>
-              <li><%= link_to "Design", entries_path(:category=>"Design")%></li>
-              <li><%= link_to "Food", entries_path(:category=>"Food")%></li>
+              <li><%= link_to "Music", entries_path(:category=>"Music")%>[<%= Entry.where(category: "Music").count%>]</li>
+              <li><%= link_to "Travel", entries_path(:category=>"Travel")%>[<%= Entry.where(category: "Travel").count%>]</li>
+              <li><%= link_to "Design", entries_path(:category=>"Design")%>[<%= Entry.where(category: "Design").count%>]</li>
+              <li><%= link_to "Food", entries_path(:category=>"Food")%>[<%= Entry.where(category: "Food").count%>]</li>
             </ul>
           </div>
           <div class="col-lg-6">
             <ul class="list-unstyled">
-              <li><%= link_to "Movie", entries_path(:category=>"Movie")%></li>
-              <li><%= link_to "Technology", entries_path(:category=>"Technology")%></li>
-              <li><%= link_to "Hobby", entries_path(:category=>"Hobby")%></li>
-              <li><%= link_to "Other", entries_path(:category=>"Other")%></li>
+              <li><%= link_to "Movie", entries_path(:category=>"Movie")%>[<%= Entry.where(category: "Movie").count%>]</li>
+              <li><%= link_to "Technology", entries_path(:category=>"Technology")%>[<%= Entry.where(category: "Technology").count%>]</li>
+              <li><%= link_to "Hobby", entries_path(:category=>"Hobby")%>[<%= Entry.where(category: "Hobby").count%>]</li>
+              <li><%= link_to "Other", entries_path(:category=>"Other")%>[<%= Entry.where(category: "Other").count%>]</li>
             </ul>
           </div>
         </div>
@@ -141,8 +144,8 @@
 
       <!-- Side Widget Well -->
       <div class="well">
-        <h4>Side Widget Well</h4>
-        <p>text</p>
+        <h4>Random Post Content</h4>
+        <p><%= @entry.try(:contents) %></p>
       </div>
 
     </div>
