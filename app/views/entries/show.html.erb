@@ -86,6 +86,9 @@
       <!-- Blog Search Well -->
       <div class="well" style="margin-top: 20px">
           <h4>Losowy content</h4>
+        <% if @entry.count = 0 %>
+            <%= flash.notice 'proszę się zarejestrować' %>
+            <%else%>
           <p class="pull-left">
             <img class="media-object" src="<%=random_avatar.avatar(:img)%>" alt="">
           </p>
@@ -94,6 +97,7 @@
           <p>Kategoria: <span style="color: #1b6d85;"><%= random_items.category %></span></p>
           <div style="word-break: break-all;"><p style="color: #31b0d5">Treść postu:</p> <%= random_items.contents %></div>
           <p><small><%= random_items.created_at.strftime("%d %b. %Y %H:%M") %></small></p>
+            <%end%>
           <% if random_items.youtube_url %>
               <%= youtube_embed random_items.youtube_url %>
           <%end%>
