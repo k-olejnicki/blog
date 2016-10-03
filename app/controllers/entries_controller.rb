@@ -11,16 +11,13 @@ class EntriesController < ApplicationController
       else
     if params[:category]
       @entries = Entry.where(:category => params[:category])
-      flash[:notice] = "There are <b>#{@entries.count}</b> in this category".html_safe
+      flash[:notice] = "<b>#{@entries.count}</b> postów w tej kategorii".html_safe
     else
       @entries = Entry.all.order("created_at DESC") && Entry.where(["date <= ?" , Date.today])
     end
     end
   end
-  def random_items
-    offset = rand(Entry.count)
-    rand_record = Entry.offset(offset).first
-  end
+
   # GET /entries/1
   # GET /entries/1.json
   def show

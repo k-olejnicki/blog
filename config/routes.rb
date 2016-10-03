@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :entries
   resources :comments
+  get '/comments' => 'entries#new'
   get 'signup' => 'users#new'
   get 'login' => 'sessions#new'
   delete 'logout' => 'sessions#destroy'

@@ -5,9 +5,11 @@ class VisitorsController < ApplicationController
     if params[:search]
       @entries = Entry.search(params[:search]).order('created_at DESC')
     else
-      @entries = Entry.all.order('created_at DESC')
+      @entries = Entry.all.paginate(:page => params[:page], :per_page => 10)
     end
   end
     @user= User.new
     @users = User.all
+    @comment = Comment.new
+    @comments = Comment.all
   end

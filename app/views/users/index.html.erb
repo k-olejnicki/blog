@@ -1,14 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Users</h1>
+<h1>Lista użytkowników</h1>
 
 <table>
   <thead>
     <tr>
       <th>Nick</th>
-      <th>Name</th>
+      <th>Nazwa</th>
       <th>Email</th>
-      <th>Password digest</th>
+      <th>Avatar</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -19,10 +19,10 @@
         <td><%= user.nick %></td>
         <td><%= user.name %></td>
         <td><%= user.email %></td>
-        <td><%= user.password_digest %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><img class="media-object" src="<%=user.avatar(:img)%>" alt=""></td>
+
+        <td><%= link_to 'Pokaż', user %></td>
+        <td><%= link_to 'Edytuj', edit_user_path(user) %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,6 +30,6 @@
 
 <br>
 
-<%= link_to 'New User', new_user_path %>
+<%= link_to 'Dodaj Użytkownika', new_user_path %>
 
 

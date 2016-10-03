@@ -8,15 +8,15 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <%= link_to 'Home', root_path, class: 'navbar-brand' %>
+      <%= link_to 'Strona główna', root_path, class: 'navbar-brand' %>
       <% if current_user %>
             <div style="color:#f056f4" , class="navbar-brand">
               <%= current_user.email %> </div>
-            <%= link_to "Add Post", 'entry/new', method: "create", class: 'navbar-brand' %>
-            <%= link_to "Log out", logout_path, method: "delete", class: 'navbar-brand' %>
+            <%= link_to "Dodaj post", 'entry/new', method: "create", class: 'navbar-brand' %>
+            <%= link_to "Wyloguj", logout_path, method: "delete", class: 'navbar-brand', id: 'logout' %>
       <% else %>
-            <%= link_to "Login", 'login', class: 'navbar-brand' %>
-            <%= link_to "Signup", 'signup', class: 'navbar-brand' %>
+            <%= link_to "Zaloguj", '/login', class: 'navbar-brand', id: 'login' %>
+            <%= link_to "Rejestracja", '/signup', class: 'navbar-brand', id: 'register' %>
       <% end %>
     </div>
     <div class="collapse navbar-collapse">

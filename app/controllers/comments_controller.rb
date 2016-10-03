@@ -5,6 +5,8 @@ class CommentsController < ApplicationController
   # GET /comments.json
   def index
     @comments = Comment.all
+    @entry= Entry.new
+    @entries = Entry.all
   end
 
   # GET /comments/1
@@ -29,7 +31,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @comment, notice: 'Added comment' }
+        format.html { redirect_to controller: 'entries', action: 'show', :id => @comment.entry_id, notice: 'Dodano komentarz' }
         format.json { render :show, status: :created, location: @comment }
       else
         format.html { render :new, notice: 'Error when create comment'  }
