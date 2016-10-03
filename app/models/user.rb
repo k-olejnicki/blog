@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
      :storage => :dropbox,
      :dropbox_credentials => "#{Rails.root}/config/dropbox_config.yml",
      :dropbox_options => {
-     :path => proc { |style| "#{style}/#{id}_#{image.original_filename}"},
+     :path => proc { |style| "#{style}/#{id}_#{avatar.original_filename}"},
      :unique_filename => true},
      :dropbox_visibility => 'public'
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
