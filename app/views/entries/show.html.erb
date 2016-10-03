@@ -86,7 +86,7 @@
       <!-- Blog Search Well -->
       <div class="well" style="margin-top: 20px">
           <h4>Losowy content</h4>
-        <% if @entry.count = 0 %>
+        <% if @entry.count == 0 %>
             <%= flash.notice 'proszę się zarejestrować' %>
             <%else%>
           <p class="pull-left">
