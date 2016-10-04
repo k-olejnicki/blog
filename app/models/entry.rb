@@ -1,6 +1,8 @@
 class Entry < ActiveRecord::Base
   validates :title, presence: true, uniqueness: true
   validates :contents, presence: true
+  validates :category, presence: true
+  validates :image, presence: true
   has_many :comments
   belongs_to :user
   has_attached_file :image, styles: { normal: "900x300" },

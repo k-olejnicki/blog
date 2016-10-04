@@ -16,6 +16,7 @@ gem 'high_voltage'
 gem 'simple_form'
 gem 'will_paginate', '~> 3.0.7'
 gem 'will_paginate-bootstrap', '~> 1.0.1'
+gem 'rails-i18n'
 
 group :development, :test do
   gem 'byebug'
