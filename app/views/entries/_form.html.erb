@@ -9,9 +9,9 @@
                 end_month: Date.today.month + 12, start_year: Date.today.year, end_year: Date.today.year+1,
                 order: [:day, :month, :year] %>
     <%=  f.input_field :category, as: :radio_buttons, collection: ["Muzyka","Podróże","Styl","Żywność","Film","Technologia","Hobby","Inne"] %>
-    <%= f.input :contents, label: 'Post Content',:default => "First Line \n Second Line \n Third Line" %>
+    <%= f.input :contents, label: 'Treść postu',:default => "First Line \n Second Line \n Third Line" %>
     <%= f.label :youtube_url %>
-    <%= f.input_field :youtube_url,label:'Youtube video url', value:'https://' , hint: 'np.https://www.youtube.com/watch?v=[film_unique_id]' %>
+    <%= f.input_field :youtube_url,label:'Link Youtuba', value:'https://' , hint: 'np.https://www.youtube.com/watch?v=[film_unique_id]' %>
     <%= f.input :image %>
   </div>
 

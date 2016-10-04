@@ -43,12 +43,10 @@ img {
 }
 @font-face {
   font-family: 'Shadows Into Light Two';
-  src: url('/fonts/ShadowsIntoLightTwo-Regular.ttf') format('truetype');
+  src: asset_data_url('ShadowsIntoLightTwo-Regular.ttf') format('truetype');
   font-weight: bold;
   font-style: normal;
   font-family: 'Shadows Into Light Two';
-  font-style: normal;
-  font-weight: 400;
 }
 
 // override for the 'Home' navigation link
@@ -94,9 +92,6 @@ td {
 }
 th {
   padding: 20px;
-}
-.h4 {
-
 }
 #logout {
   color: #730E15;

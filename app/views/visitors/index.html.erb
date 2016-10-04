@@ -95,6 +95,9 @@
             <!-- Side Widget Well -->
             <div class="well">
                 <h4>Losowy content</h4>
+              <% if @entries.count <= 0 %>
+                  <%= print 'proszę się zarejestrować' %>
+              <%else%>
               <p class="pull-left">
                     <img class="media-object" src="<%=random_avatar.avatar(:img)%>" alt="">
                     </p>
@@ -105,6 +108,7 @@
                     <p><small><%= random_items.created_at.strftime("%d %b. %Y %H:%M") %></small></p>
                 <% if random_items.youtube_url %>
                     <%= youtube_embed random_items.youtube_url %>
+                  <%end%>
                 <%end%>
             </div>
 
