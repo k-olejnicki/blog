@@ -13,10 +13,10 @@
             <div style="color:#f056f4" , class="navbar-brand">
               <%= current_user.email %> </div>
             <%= link_to "Dodaj post", 'entry/new', method: "create", class: 'navbar-brand' %>
-            <%= link_to "Wyloguj", logout_path, method: "delete", class: 'navbar-brand', id: 'logout' %>
+            <%= link_to "Wyloguj", logout_path, method: "delete", class: 'navbar-brand', style: 'color: #730E15;' %>
       <% else %>
-            <%= link_to "Zaloguj", '/login', class: 'navbar-brand', id: 'login' %>
-            <%= link_to "Rejestracja", '/signup', class: 'navbar-brand', id: 'register' %>
+            <%= link_to "Zaloguj", '/login', class: 'navbar-brand', style: 'color: #5cb85c;' %>
+            <%= link_to "Rejestracja", '/signup', class: 'navbar-brand', style: 'color: #8a6d3b;' %>
       <% end %>
     </div>
     <div class="collapse navbar-collapse">
