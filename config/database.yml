@@ -51,11 +51,12 @@ test:
   template: template0
 
 production:
-  adapter:  postgresql
+  adapter:  ec2-54-235-152-114.compute-1.amazonaws.com
   host:     localhost
   encoding: unicode
-  database: blog_production
+  database: d3m12hneb0ppge
   pool:     5
-  username: blog
-  password: wow
+  username: ENV["DATABASE_USERNAME"]
+  password: ENV["DATABASE_PASSWORD"]
   template: template0
+  port: 5432
