@@ -41,11 +41,6 @@ group :development do
 end
 
 group :production do
-  gem 'capistrano', '~> 3.0.1'
-  gem 'capistrano-bundler'
-  gem 'capistrano-rails', '~> 1.1.0'
-  gem 'capistrano-rails-console'
-  gem 'capistrano-rvm', '~> 0.1.1'
   gem 'pg'
   gem 'rails_12factor'
   gem 'puma'

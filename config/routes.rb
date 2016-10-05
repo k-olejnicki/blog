@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get 'homepage' => 'visitors#index'
   post 'pages/entry/new' => 'entries#new'
   resources :users
-  root to: 'visitors#index'
+  root 'visitors#index'
   post 'login' => 'sessions#create'
   post 'entries/entry/new' => 'entries#new'
   get 'comment' => 'comments#new'
